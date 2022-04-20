@@ -1,0 +1,17 @@
+
+@mixin flexBox($direction, $align, $content) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $content;
+}
+
+@mixin radius{
+  border-radius: 7px;
+}
+
+@mixin h2margin{
+  margin-bottom: 30px;
+  font-size: 40px;
+  color: $color-primary;
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/Frontend/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://kit.fontawesome.com/37f0f607e6.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <title>Book Ducks</title>
+</head>
+<body>
+  <header class="header">
+   <nav class="nav">
+    <div class="logo-container">
+      <h1 class="logo">
+        <a href="/Frontend/index.html">
+         Book Ducks
+        </a>
+      </h1>
+    </div>
+    <ul class="nav-list">
+   
+     <li class="nav-item">
+      <a href="?booklist=true" id="navBooks">
+       Böcker
+      </a>
+    </li>
+  
+    <li class="nav-item">
+     
+        <div id="userWelcome" class="user-welcome link hide">
+        </div>
+        <ul id="userNav" class="user-nav hide">
+          <li>
+            <a href="?profile=true" id="profile"class="link">
+              Min Profil
+            </a>
+          </li>
+          <li>
+            <a href="?upload=true" id="upload" class="link">
+              Ladda upp böcker
+            </a>
+          </li>
+          
+        </ul>
+    </li>
+
+    <li class="nav-item">
+      <a href="index.html" id="logOut"class="link hide">
+       Logga ut<i class="fa fa-regular fa-right-to-bracket"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="?login=true" id="logIn">
+       Logga in<i class="fa fa-regular fa-right-to-bracket"></i>
+      </a>
+    </li>
+
+    </ul>
+   </nav>
+  </header>
+  <main id="mainContent"class="main">
+
+    <div id="loginBox" class="aut-box hide">
+      <h2>Logga in för att få tillgång<br /> till alla böcker!</h2>
+      <form id="loginForm" class="form">
+
+       <div class="field">
+        <label for="inputUsername">Användarnamn:</label>
+        <input type="text" id="inputUsername">
+       </div>
+
+       <div class="field">
+        <label for="inputPassword">Lösenord:</label>
+        <input type="password" id="inputPassword">
+       </div>
+
+       <button id="buttonLogin" class="button-submit">Logga In<i class="fa fa-regular fa-right-to-bracket"></i></button>
+       <p>Har du inte ett konto? 
+         <a id="linkRegister" href="?register=true">
+           Registrera dig här.
+         </a>
+      </form>
+    </div>
+
+    <div id="registerBox" class="aut-box hide">
+      <h2>Registrera dig hos Book Ducks!</h2>
+      <form id="registerForm" class="form">
+
+       <div class="field">
+        <label for="inputRegUsername">Användarnamn:</label>
+        <input type="text" id="inputRegUsername">
+       </div>
+
+       <div class="field">
+        <label for="inputRegPassword">Lösenord:</label>
+        <input type="password" id="inputRegPassword">
+       </div>
+
+       <div class="field">
+        <label for="inputRegEmail">E-mail:</label>
+        <input type="email" id="inputRegEmail">
+       </div>
+
+       <button id="buttonRegister" class="button-submit">Registrera dig<i class="fa fa-regular fa-right-to-bracket"></i></button>
+       <p>Har du redan ett konto? 
+         <a id="linkLogin" href="?login=true">
+           Logga in här.
+         </a>
+      </form>
+    </div>
+
+    <div id="bookList" class="book-list hide"><h2>Tillgängliga Böcker</h2>
+      <section class="book-list-head">
+        <select name="filterGenre" id="filterGenre" class="filter-genre">
+          <option value="">Genre</option>
+        </select>
+        <a href="#" id="filterAllBooks">Alla Böcker</a>
+        <a href="#" id="filterAudioBooks">Ljudböcker</a>
+        <a href="#" id="filterBooks">Böcker</a>
+      </section>
+      <ul id="bookListMain" class="book-list-main">
+
+      </ul>
+    </div>
+
+    <div id="profileBox" class="profile-box hide">
+      <div id="content" class="content">
+      </div>
+    </div>
+
+    <div id="uploadBox" class="upload-box hide">
+      <div id="uploadContent" class="upload-content">
+        <h2>Ladda upp böcker</h2>
+
+        <div class="upload-select">
+          <label for="type">Boktyp:</label>
+          <select name="Type" id="type">
+            <option value="" unavailable>Välj typ</option>
+            <option value="audio">Ljudbok</option>
+            <option value="book">Bok</option>
+          </select>
+        </div>
+        <div class="upload-select">
+          <label for="type">Genre:</label>
+          <select name="genre" id="selectGenre">
+            <option value="" unavailable>Välj genre</option>
+            
+          </select>
+        </div>
+
+        <div class="upload-field">
+        <label for="uploadTitle">Titel:</label>
+        <input type="text" id="uploadTitle">
+        </div>
+      
+        <div class="upload-field">
+        <label for="uploadAuthor">Författare:</label>
+        <input type="text" id="uploadAuthor">
+        </div>
+      
+        <div id="lengthField" class="upload-field hide">
+        <label for="uploadLength">Längd:</label>
+        <input type="number" id="uploadLength">
+        </div>
+
+        <div class="upload-field">
+          <label for="uploadPubDate">Publicerad:</label>
+          <input type="date" id="uploadPubDate">
+          </div>
+
+        <div id="pagesField" class="upload-field hide">
+          <label for="uploadPages">Antal sidor:</label>
+          <input type="number" id="uploadPages">
+          </div>
+      
+        <div class="upload-field">
+        <label for="uploadRating">Betyg:</label>
+        <input type="number" id="uploadRating">
+        </div>
+
+        <div class="upload-field">
+          <label for="uploadBookCover">Bild:</label>
+          <input type="file" id="uploadBookCover">
+          </div>
+
+
+        <div class="button-container">
+          <button id="buttonUpload" class="button-submit">Ladda upp<i class="fa-solid   fa-circle-arrow-up"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    
+
+  </main>
+  
+  <script src="script.js"></script>
+</body>
+</html>

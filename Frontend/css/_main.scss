@@ -1,0 +1,274 @@
+
+
+.header{
+  box-shadow: rgba(149, 157, 165, 0.079) 0px 8px 24px;
+  .nav{
+    @include flexBox(row, center, space-around);
+    padding:20px;
+    .logo-container{
+      flex: 0.3;
+     .logo{
+       a{
+        color:$color-primary;
+       }
+     }
+    }
+    .nav-list{
+      @include flexBox(row, center, space-around);
+      flex: 1;
+      .nav-item{
+        border-bottom: solid 1px rgba(255, 0, 0, 0);
+        a{
+          color: $color-primary;
+        }
+        &:hover{
+          border-bottom: solid 1px $color-primary;
+        }
+        .user-welcome{
+          position:relative;
+          cursor: pointer;
+        }
+        .user-nav{
+          @include flexBox(column, flex-start, flex-start);
+          position:absolute;
+          height: 200px;
+          width: 200px;
+          background-color: $color-violet;
+          padding:20px;
+          border-radius: 20px;
+          li{
+            margin-top: 10px;
+          }
+          a{
+            color: $color-primary;
+            border-bottom: solid 1px rgba(255, 0, 0, 0);
+            &:hover{
+              border-bottom: solid 1px $color-primary;
+            }
+          }
+        }
+        .link{
+          @include flexBox(row, center, center);
+          flex:1;
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}
+
+.main{
+  @include flexBox(column, center, space-around);
+  
+ .aut-box{
+  @include flexBox(column, center, space-around);
+  @include radius;
+  background-color: $color-white;
+  padding:40px;
+   h2{
+     font-weight: bolder;
+     font-size: 40px;
+     color: $color-primary;
+   }
+   .form{
+    @include flexBox(column, center, space-around);
+    width: 100%;
+    padding:20px;
+     .field{
+      @include flexBox(row, flex-end, flex-start);
+       margin-top:20px;
+       width: 100%;
+       height: 30px;
+       label{
+        @include flexBox(row, flex-end, flex-start);
+         width:150px;
+         letter-spacing: 1px;
+         color:$color-grey;
+       }
+       input{
+         border:none;
+         border-bottom: 1px solid $color-grey;
+         height: 100%;
+         width:50%;
+         padding:10px;
+       }
+     }
+    }
+   p{
+     margin-top:30px;
+   }
+   a{
+    color: $color-primary;
+    text-decoration: underline;
+   }
+  }
+  .book-list{
+    @include flexBox(column, center, space-around);
+    padding:30px;
+    width: 100%;
+    h2{
+      @include h2margin;
+      color: $color-primary;
+    }
+    .book-list-head{
+      @include flexBox(row, center, space-around);
+      width: 100%;
+      padding:20px;
+      font-weight: bolder;
+      border-bottom: $color-lighter-grey 1px solid;
+      .filter-genre{
+        padding:10px;
+        background-color: $color-primary;
+        color: white;
+        @include radius;
+        border: none;
+        font-weight: bold;
+      }
+      a{
+        color: $color-primary;
+        border-bottom: solid 1px rgba(255, 255, 255, 0);
+        &:hover{
+          border-bottom: solid 1px $color-primary;
+        }
+      }
+    }
+    .book-list-main{
+      @include flexBox(row, center, space-around);
+      flex-wrap: wrap;
+      width: 100%;
+      height: 100%;
+      .book-card{
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        width: 400px;
+        padding:10px;
+        color:$color-dark-grey;
+        margin-top: 10px;
+        h3{
+          @include flexBox(row, center, space-between);
+          .fa-book-open{
+            display: block;
+          }
+          font-size: 30px;
+          background-color: $color-primary;
+          color: white;
+          @include radius;
+          padding:10px 20px;
+          margin-bottom:10px;
+        }
+        .info{
+          font-weight: bold;
+        }
+        .rate-container{
+          @include flexBox(row, flex-start, flex-start);
+          font-weight: bold;
+          .star{
+            color: orange;
+            margin-left:1px;
+          }
+        }
+        .cover{
+          @include radius;
+          margin: 15px 0px;
+        width: 60%;
+        height: 300px;
+        background-position: center;
+        }
+        .loan-button{
+          margin-top:10px;
+          background-color: rgb(255, 85, 0);
+          color: $color-white;
+          font-weight: bold;
+          width: 100%;
+          @include radius;
+          padding:20px;
+          letter-spacing: 2px;
+          font-size: 20px;
+          .fa-book{
+            margin-left:5px;
+          }
+          &:hover{
+            background-color: $color-dark-primary;
+            cursor: pointer;
+          }
+        }
+
+      }
+    }
+  }
+  .profile-box{
+    @include flexBox(column, center, center);
+    .content{
+    @include flexBox(column, flex-start, center);
+    padding:30px;
+    width: 100%;
+    height: 100%;
+    .list-uploaded-books{
+      margin-top: 30px;
+      li{
+        p{
+          color: $color-primary;
+        }
+      }
+    }
+    h2{
+      @include h2margin;
+    }
+    p{
+      span{
+        font-weight: bold;
+      }
+      margin-top:20px;
+      color: $color-dark-grey;
+      border-bottom: 1px $color-light-grey solid;
+    }
+    .message{
+      @include flexBox(column, center, space-around);
+      padding:30px;
+      color: $color-grey;
+      background-color: pink;
+    }
+    }
+  }
+  .upload-box{
+    @include flexBox(column, center, center);
+    width: 50%;
+    .upload-content{
+    @include flexBox(column, flex-start, center);
+    padding:30px;
+    width: 100%;
+    height: 100%;
+      h2{
+        @include h2margin;
+      }
+      .upload-select{
+        @include flexBox(row, center, flex-start);
+        margin-top: 10px;
+        width: 100%;
+      }
+      select{
+        padding: 10px;
+        margin-left:30px;
+        option{
+          padding:10px;
+        }
+      }
+      .upload-field{
+        @include flexBox(row, flex-end, space-between);
+        color: $color-dark-grey;
+        width: 100%;
+        margin-top: 30px;
+        input{
+          padding:5px;
+          height: 30px;
+          flex:0.9;
+          border: none;
+          border-bottom: solid 1px $color-grey;
+        }
+    
+      }
+    }
+    
+  }
+}
+
+
