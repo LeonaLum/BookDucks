@@ -84,7 +84,9 @@ let bookListMain = document.getElementById("bookListMain");
 let bookList = document.getElementById("bookList");
 
 
-
+let formatDate = (value, locale = "en-GB") => {
+  return new Date(value).toLocaleDateString(locale);
+}
 
 
 const getBooks = async () => {
@@ -105,6 +107,7 @@ const getBooks = async () => {
    books.forEach((book) => {
      let {Title, Author, Type, Pages, Cover, PublishDate, Uploader, Uploader_email, createdAt, genre } = book.attributes;
      let rateContainer = giveRating(book);
+
      
      let cover = getBookCover(book);
 
@@ -114,9 +117,10 @@ const getBooks = async () => {
      `<h3>${Title}<i class="fa-solid fa-book-open"></i></h3>
       <p><span class="info">Upplagd av:</span><span>${Uploader}</span>
       <span class="info">email:</span> ${Uploader_email}</p>
-      <p><span class="info">Datum:</span> ${createdAt}</p>
+      <p><span class="info">Datum:</span> 
+      ${formatDate(createdAt)}</p>
       <p><span class="info">Författare:</span> ${Author}</p>
-      <p><span class="info">Genre:</span>${genre.data.attributes.Genre}</p>
+      <p><span class="info">Genre:</span> ${genre.data.attributes.Genre}</p>
       <p><span class="info">Typ:</span> ${Type}</p>
       <p><span class="info">Antal sidor:</span> ${Pages} st</p>
       <p><span class="info">Publicerad:</span> ${PublishDate}</p>
@@ -153,9 +157,10 @@ const getBooks = async () => {
      `<h3>${Title}<i class="fa-solid fa-headphones"></i></h3>
       <p><span class="info">Upplagd av:</span><span>${Uploader}</span> 
       <span class="info">email:</span> ${Uploader_email}</p>
-      <p><span class="info">Datum:</span>${createdAt}</p>
+      <p><span class="info">Datum:</span> 
+      ${formatDate(createdAt)}</p>
       <p><span class="info">Författare:</span> ${Author}</p>
-      <p><span class="info">Genre:</span>${genre.data.attributes.Genre}</p>
+      <p><span class="info">Genre:</span> ${genre.data.attributes.Genre}</p>
       <p><span class="info">Typ:</span> ${Type}</p>
       <p><span class="info">Längd:</span> ${Length} min</p>
       <p><span class="info">Publicerad:</span> ${PublishDate}</p>
