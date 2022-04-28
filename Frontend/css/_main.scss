@@ -205,7 +205,8 @@
     .list-uploaded-books{
       margin-top: 30px;
       li{
-        p{
+        .uploaded-book{
+          @include flexBox(row, flex-start, space-between);
           color: $color-primary;
         }
       }
@@ -221,6 +222,7 @@
       color: $color-dark-grey;
       border-bottom: 1px $color-light-grey solid;
     }
+  
     .message{
       @include flexBox(column, center, space-around);
       padding:30px;

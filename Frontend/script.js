@@ -337,6 +337,9 @@ buttonLogin.addEventListener("click", login);
 userWelcome.addEventListener("click", () => {
   userNav.classList.toggle("hide");
 })
+mainContent.addEventListener("click", () => {
+  userNav.classList.add("hide");
+})
 
 
 linkRegister.addEventListener("click", () => {
@@ -369,15 +372,33 @@ profile.addEventListener("click", showProfile);
 
 function showProfile() {
 
+
   let userbooks = JSON.parse(sessionStorage.getItem("userbooks"));
 
   let listUploadedBooks = document.createElement("ul");
   listUploadedBooks.innerHTML = ` <h3>Uppladdade böcker:</h3>`
   listUploadedBooks.classList.add("list-uploaded-books");
+ 
   userbooks.forEach((book) => {
+    let trashCan = document.createElement("i");
+    trashCan.classList.add("fa-solid");
+    trashCan.classList.add("fa-trash");
+    trashCan.addEventListener("click", (e) => {
+      let chosenBook = e.target.parentElement.innerText;
+     console.log(boBooks, auBooks)
+     boBooks.forEach((book) => {
+       console.log(book.id)
+     })
+     
+    })
     let listItem = document.createElement("li");
-    listItem.innerHTML = `
-    <p>${book.Title}</p>`;
+    let uploadedBook = document.createElement("p");
+    uploadedBook.classList.add("uploaded-book");
+    uploadedBook.innerHTML = `${book.Title}`
+  
+    listItem.appendChild(uploadedBook);
+    uploadedBook.appendChild(trashCan);
+
     listUploadedBooks.appendChild(listItem);
   })
 
