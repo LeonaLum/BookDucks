@@ -386,7 +386,7 @@ function showProfile() {
   <p><span>Användarnamn:</span> ${currentUser.username}</p>
   <p><span>Email-address:</span> ${currentUser.email}</p>
   <p><span>Id:</span> ${currentUser.id}</p>
-  <p><span>Blev medlem:</span> ${currentUser.createdAt}</p>
+  <p><span>Blev medlem:</span> ${formatDate(currentUser.createdAt)}</p>
   
   <button class="button-submit" onclick="removeAccount()">Ta bort detta konto</button>`;
   
@@ -461,7 +461,7 @@ const uploadBook = async ()  => {
        chosenGenre = genre;
       }
     })
-
+    console.log(chosenGenre)
     axios.post("http://localhost:1337/api/audio-books", {
     data: 
       {
